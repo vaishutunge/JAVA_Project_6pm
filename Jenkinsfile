@@ -14,11 +14,22 @@ pipeline{
             }
         }
         
-        stage('Build'){
+        stage("SonarQube_check_quality"){
+            
             steps{
-                sh 'mvn install'
-            }
-        }
+                script{
+                    withSonarQubeEnv(credentialsId: 'sonarserver') {
+                      sh 'mvn sonar:sonar'
+                      
+                   }
+                   def qg = waitForQualityGate()
+                      if (qg.status != 'OK') {
+                           error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                      }
+                    sh "mvn clean install"
+                  }
+               }
+             }  
         
         stage('Docker Build'){
             steps{
