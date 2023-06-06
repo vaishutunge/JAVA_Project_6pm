@@ -33,7 +33,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh 'docker build -t nbktechnosys/myjavaproject7may .'
+                sh 'docker build -t nbktechnosys/myjavaproject6un .'
             }
         }
         
@@ -42,7 +42,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerpush')]) {
                 sh 'docker login -u nbktechnosys -p ${dockerpush}'
                 }
-                 sh 'docker push nbktechnosys/myjavaproject7may'
+                 sh 'docker push nbktechnosys/myjavaproject6jun'
             }
            
         }
