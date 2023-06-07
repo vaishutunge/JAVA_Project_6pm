@@ -10,7 +10,7 @@ pipeline{
         stage('Git Clone'){
             
             steps{
-                git branch: 'main', url: 'https://github.com/knbtechnosys/JAVA_Project_6pm.git'
+               git branch: 'main', url: 'https://github.com/knbtechnosys/JAVA_Project_6pm.git'
             }
         }
         
