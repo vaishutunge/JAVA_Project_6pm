@@ -30,8 +30,8 @@ pipeline{
         
         stage('Docker Push'){
             steps{
-               withCredentials([string(credentialsId: 'docker-hub', variable: 'docker-hub')]) {
-                sh 'docker login -u nbktechnosys -p ${docker-hub}'
+               withCredentials([string(credentialsId: 'dockerpush', variable: 'dockerpush')]) {
+                sh 'docker login -u nbktechnosys -p ${dockerpush}'
                 }
                  sh 'docker push nbktechnosys/myjavaproject6jun'
             }
