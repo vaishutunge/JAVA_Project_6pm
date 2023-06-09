@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    
+       
+    stages{
+        
+        stage('Git Clone'){
+            
+            steps{
+               git branch: 'main', url: 'https://github.com/knbtechnosys/JAVA_Project_6pm.git'
+            }
+        }
+        
+               
+        stage('Docker Build'){
+            steps{
+                sh 'docker build -t nbktechnosys/myjavaproject6un .'
+            }
+        }
+        
+        stage('Docker Push'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerpush')]) {
+                sh 'docker login -u nbktechnosys -p ${dockerpush}'
+                }
+                 sh 'docker push nbktechnosys/myjavaproject6jun'
+            }
+           
+        }
+    }
+}
