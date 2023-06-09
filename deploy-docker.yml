@@ -3,9 +3,9 @@
   hosts: dev
   become: true
   tasks:
-             - community.general.docker_image:
-               name: nbktechnosys/myjavaproject8jun
-               source: pull      
+  - community.general.docker_image:
+    name: nbktechnosys/myjavaproject8jun
+    source: pull      
        
          
           
