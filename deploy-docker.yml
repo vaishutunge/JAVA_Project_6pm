@@ -23,6 +23,5 @@
         name: my_container
         state: present
         image: "nbktechnosys/myjavaproject8jun"
-        ports:
-           - 0.0.0.0:8080:8080 
+        exposed_ports: 8081
           
