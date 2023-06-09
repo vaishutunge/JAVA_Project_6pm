@@ -3,6 +3,12 @@
   become: true
 
   tasks:
+    - name: install pip
+      package:
+       name: python3-pip
+       state: present
+       update_cache: true
+  
     - name: ensure a container is running
       docker_container:
         name: my_container
