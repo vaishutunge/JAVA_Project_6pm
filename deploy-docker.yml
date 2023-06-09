@@ -8,7 +8,16 @@
        name: python3-pip
        state: present
        update_cache: true
-  
+
+    - name: install docker sdk
+      pip:
+       name: docker
+
+    - name: start docker service
+      service:
+        name: docker
+        state: started
+
     - name: ensure a container is running
       docker_container:
         name: my_container
@@ -17,6 +26,4 @@
         pull: true
         ports:
            - 0.0.0.0:8080:8080
-       
-         
           
