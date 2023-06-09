@@ -35,6 +35,7 @@ pipeline{
                 }
                  sh 'docker push nbktechnosys/myjavaproject8jun'
             }
+        }
             
         stage('ansible deploy'){
             steps{
