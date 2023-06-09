@@ -35,6 +35,13 @@ pipeline{
                 }
                  sh 'docker push nbktechnosys/myjavaproject8jun'
             }
+            
+        stage('ansible deploy'){
+            steps{
+               ansiblePlaybook credentialsId: 'ansiblenode', disableHostKeyChecking: true, installation: 'ansible', inventory: 'myhosts.inv', playbook: 'deploy-docker.yml'
+                }
+                 
+            }
            
         }
     }
