@@ -21,9 +21,8 @@
     - name: ensure a container is running
       docker_container:
         name: my_container
-        state: started
+        state: present
         image: "nbktechnosys/myjavaproject8jun"
-        pull: true
         ports:
-           - 0.0.0.0:8080:8080
+           - 0.0.0.0:8080:8080 
           
