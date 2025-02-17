@@ -112,3 +112,11 @@
         </plugins>
     </build>
 </project>
+
+<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://52.25.148.132:8081/repository/javaproject/</url>
+        </repository>
+    </distributionManagement>
+</project>
