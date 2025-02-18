@@ -96,6 +96,7 @@
             <version>${logback.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -111,4 +112,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://localhost:8081/repository/javaproject/</url>
+        </repository>
+    </distributionManagement>
 </project>
