@@ -1,8 +1,15 @@
 pipeline {
-   agent any
+    agent any
    tools {
         maven 'maven' 
     }
+
+    environment {
+        AWS_CREDENTIALS_ID = 'aws_credetials'
+        S3_BUCKET = 'myjavaproject8march'
+        WAR_FILE = 'target/mahaLogin-5.0.war'  // Change this based on your build output
+    }
+
     
     stages {
         stage('clone') {
@@ -16,5 +23,20 @@ pipeline {
                 sh 'mvn install'
             }
         }
+        
+        stage('Check WAR File') {
+    steps {
+        sh 'ls -l target/'
+            }
+        }
+
+        stage('Upload WAR to S3') {
+            steps {
+                withAWS(credentials: AWS_CREDENTIALS_ID, region: 'us-west-1') {
+                    sh "aws s3 cp ${WAR_FILE} s3://${S3_BUCKET}"
+                }
+            }
+        }
     }
 }
+
